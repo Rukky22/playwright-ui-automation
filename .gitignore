@@ -11,3 +11,4 @@ test-data/storageState.json
 .env
 .vscode/
 .dist/
+reports/
