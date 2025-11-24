@@ -66,6 +66,11 @@ export default class CartPage extends BasePage {
     await expect(this.page).toHaveURL("/checkout-step-one.html");
   }
 
+  async returnToProductPage() {
+    await this.backToShoppingButton.click();
+    await expect(this.page).toHaveURL("/Inventory.html");
+  }
+
   async takeCartScreenshot(name: string) {
     await this.takeScreenshot(name);
   }
