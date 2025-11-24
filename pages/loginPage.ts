@@ -18,7 +18,7 @@ export default class LoginPage extends BasePage {
   }
 
   async navigateToLogin() {
-    await this.navigateTo("/login");
+    await this.navigateTo("login");
     await this.waitForPageLoad();
   }
 
