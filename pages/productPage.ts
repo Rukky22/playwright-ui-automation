@@ -29,14 +29,23 @@ export default class ProductPage extends BasePage {
     await expect(this.pageTitle).toHaveText("Products");
     await expect(this.pageTitle).toBeVisible();
   }
-  async addAllItemsToCart(productNames: string[]) {
+
+  async addMultipleItemsToCart(productNames: string[]) {
     for (const name of productNames) {
       const productLocator = this.productListLink.filter({ hasText: name });
       await productLocator.click();
       await this.addToCartButton.click();
       await this.backToProductsButton.click();
     }
-    return productNames.length;
+  }
+
+  async addOneItemToCart(productName: string) {
+    const productLocator = this.productListLink.filter({
+      hasText: productName,
+    });
+    await productLocator.click();
+    await this.addToCartButton.click();
+    await this.backToProductsButton.click();
   }
 
   async verifyAllProductsDisplayed(expectedCount: number) {
@@ -47,6 +56,7 @@ export default class ProductPage extends BasePage {
   }
 
   async goToCartPage() {
+    await this.scrollToTop();
     await this.navigateTo("cart.html");
   }
 }
