@@ -38,7 +38,7 @@ export default class CheckoutPageCredentials extends BasePage {
     await this.enterText(this.PostalCodeInput, postalCode);
   }
 
-  async proceedToNextCheckoutStep() {
+  async proceedToCheckoutOverview() {
     await this.continueButton.click();
   }
 

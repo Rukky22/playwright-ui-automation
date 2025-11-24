@@ -23,6 +23,11 @@ export default class BasePage {
     return this.page.url();
   }
 
+  async cleanAmountLabelText(labelAmountText: string | null) {
+    const cleaned = (labelAmountText ?? "").replace(/[^0-9.]/g, "");
+    return cleaned ? parseFloat(cleaned) : 0;
+  }
+
   async clickElement(selector: string) {
     await this.page.click(selector);
   }
