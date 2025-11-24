@@ -25,8 +25,12 @@ export default class CheckoutPageOverview extends BasePage {
     this.cancelButton = this.page.getByRole("button", { name: "Cancel" });
     this.pageTitle = this.page.locator('[data-test="title"]');
     this.checkItemNames = this.page.locator(".inventory_item_name");
-    this.paymentInformationLabel = this.page.locator(".summary_value_label");
-    this.shippingInformationLabel = this.page.locator(".summary_value_label");
+    this.paymentInformationLabel = this.page
+      .locator(".summary_value_label")
+      .nth(0);
+    this.shippingInformationLabel = this.page
+      .locator(".summary_value_label")
+      .nth(1);
   }
 
   async verifyOnCheckoutOverviewPage() {
@@ -87,11 +91,11 @@ export default class CheckoutPageOverview extends BasePage {
   }
 
   async getPaymentInformation() {
-    return this.paymentInformationLabel.nth(0).textContent();
+    return this.paymentInformationLabel.textContent();
   }
 
   async getShoppingInformation() {
-    return this.shippingInformationLabel.nth(1).textContent();
+    return this.shippingInformationLabel.textContent();
   }
 
   async finishCheckout() {
