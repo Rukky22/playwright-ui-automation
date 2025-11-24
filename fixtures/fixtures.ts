@@ -55,7 +55,7 @@ export const test = baseTest.extend<MyFixtures>({
     const context = await browser.newContext();
     const page = await context.newPage();
     const loginPage = new LoginPage(page);
-    await loginPage.navigateToLoginPage();
+    await loginPage.navigateToLogin();
     await loginPage.login(process.env.USERNAME!, process.env.PASSWORD!);
     await loginPage.verifyLoginSuccess();
     const storage = await context.storageState();

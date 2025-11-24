@@ -1,4 +1,4 @@
-import { expect, Page } from "@playwright/test";
+import { expect, Locator, Page } from "@playwright/test";
 
 export default class BasePage {
   readonly page: Page;
@@ -11,7 +11,7 @@ export default class BasePage {
     await this.page.waitForLoadState("networkidle");
   }
 
-  async navigateTo(path: string) {
+  async navigateTo(path = "/") {
     await this.page.goto(path);
   }
 
@@ -27,8 +27,8 @@ export default class BasePage {
     await this.page.click(selector);
   }
 
-  async enterText(locator: string, text: string) {
-    await this.page.fill(locator, text);
+  async enterText(locator: Locator, text: string) {
+    await locator.fill(text);
   }
 
   async isElementVisible(locator: string) {

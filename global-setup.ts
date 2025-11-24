@@ -8,7 +8,7 @@ export default async () => {
 
   // Navigate to your website's login page
   const loginPage = new LoginPage(page);
-  await loginPage.navigateToLoginPage();
+  await loginPage.navigateToLogin();
 
   // Filling the login form
   await loginPage.login(process.env.USERNAME!, process.env.PASSWORD!);
