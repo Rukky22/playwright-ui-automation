@@ -12,7 +12,9 @@ export default class BasePage {
   }
 
   async navigateTo(path = "/") {
-    await this.page.goto(path);
+    const target =
+      path.startsWith("http") || path.startsWith("/") ? path : `/${path}`;
+    await this.page.goto(target);
   }
 
   async getTitle() {

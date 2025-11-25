@@ -3,7 +3,7 @@ import LoginPage from "./pages/loginPage";
 
 export default async () => {
   const browser = await chromium.launch();
-  const context = await browser.newContext();
+  const context = await browser.newContext({ baseURL: process.env.BASE_URL });
   const page = await context.newPage();
 
   // Navigate to your website's login page
