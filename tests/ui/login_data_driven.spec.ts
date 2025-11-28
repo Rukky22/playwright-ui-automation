@@ -23,7 +23,7 @@ test.describe("LoginPage Tests", () => {
     });
 
     test("should navigate to login page successfully", async () => {
-      await expect(loginPage.page).toHaveURL("https://www.saucedemo.com/");
+      await expect(loginPage.userLoggingDataBackground).toBeVisible();
       await expect(loginPage.usernameInput).toBeVisible();
       await expect(loginPage.passwordInput).toBeVisible();
       await expect(loginPage.loginButton).toBeVisible();
@@ -53,7 +53,7 @@ test.describe("LoginPage Tests", () => {
       const { username, password } = testData.credentials.invalidUsername;
       await loginPage.login(username, password);
       await loginPage.verifyLoginFailure();
-      await expect(loginPage.page).toHaveURL(/.*login.*/);
+      await expect(loginPage.userLoggingDataBackground).toBeVisible();
     });
 
     test("should fail login with invalid password", async () => {
