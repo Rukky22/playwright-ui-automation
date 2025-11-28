@@ -12,9 +12,9 @@ export default class BasePage {
   }
 
   async navigateTo(path = "/") {
-    const target =
-      path.startsWith("http") || path.startsWith("/") ? path : `/${path}`;
-    await this.page.goto(target);
+    // Playwright will automatically prepend baseURL from config
+    // if the path doesn't start with http
+    await this.page.goto(path);
   }
 
   async getTitle() {

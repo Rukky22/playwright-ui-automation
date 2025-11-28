@@ -3,6 +3,7 @@
     "target": "ESNext",
     "module": "CommonJS",
     "moduleResolution": "node",
+    "resolveJsonModule": true,
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -17,6 +18,7 @@
     "fixtures/**/*.ts",
     "pages/**/*.ts",
     "utils/**/*.ts",
-    "playwright.config.ts"
+    "playwright.config.ts",
+    "utils/helpers/testDataHelper.ts"
   ]
 }

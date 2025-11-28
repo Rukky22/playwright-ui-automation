@@ -1,25 +1,39 @@
-import { chromium } from "@playwright/test";
+// File: global-setup.ts
+import { chromium, FullConfig } from "@playwright/test";
 import LoginPage from "./pages/loginPage";
+import TestDataHelper from "./utils/helpers/testDataHelper";
 
-export default async () => {
+async function globalSetup(config: FullConfig) {
+  console.log("Running global setup...");
+
+  // Load Playwright config, including baseURL
   const browser = await chromium.launch();
-  const context = await browser.newContext({ baseURL: process.env.BASE_URL });
+  const project = config.projects[0]; // first project (chromium)
+  const useOptions = project.use ?? {}; // use settings (baseURL, etc.)
+
+  const context = await browser.newContext(useOptions);
   const page = await context.newPage();
 
-  // Navigate to your website's login page
   const loginPage = new LoginPage(page);
-  await loginPage.navigateToLogin();
 
-  // Filling the login form
-  await loginPage.login(process.env.USERNAME!, process.env.PASSWORD!);
+  try {
+    // This now WORKS because baseURL is applied correctly
+    await loginPage.navigateToLogin();
 
-  //Confirm login is successful
-  await loginPage.verifyLoginSuccess();
+    const { username, password } = TestDataHelper.getValidUser();
+    console.log(`Logging in with: ${username}`);
 
-  //Once we have login, store the state in session storage file
-  await context.storageState({ path: "./test-data/storageState.json" });
-  use: {
-    storageState: "./test-data/storageState.json";
+    await loginPage.login(username, password);
+    await loginPage.verifyLoginSuccess();
+
+    await context.storageState({ path: "./auth.json" });
+    console.log("Global setup completed successfully");
+  } catch (error) {
+    console.error("Global setup failed:", error);
+    throw error;
+  } finally {
+    await browser.close();
   }
-  await browser.close();
-};
+}
+
+export default globalSetup;

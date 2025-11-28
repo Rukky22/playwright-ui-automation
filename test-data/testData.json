@@ -1,0 +1,106 @@
+{
+  "users": {
+    "validUser": {
+      "username": "standard_user",
+      "password": "secret_sauce"
+    },
+    "lockedOutUser": {
+      "username": "locked_out_user",
+      "password": "secret_sauce"
+    },
+    "problemUser": {
+      "username": "problem_user",
+      "password": "secret_sauce"
+    },
+    "performanceGlitchUser": {
+      "username": "performance_glitch_user",
+      "password": "secret_sauce"
+    },
+    "invalidUser": {
+      "username": "invalid_user",
+      "password": "wrong_password"
+    }
+  },
+  "credentials": {
+    "valid": {
+      "username": "standard_user",
+      "password": "secret_sauce"
+    },
+    "invalidUsername": {
+      "username": "invalid_user",
+      "password": "secret_sauce"
+    },
+    "invalidPassword": {
+      "username": "standard_user",
+      "password": "wrong_password"
+    },
+    "bothInvalid": {
+      "username": "invalid_user",
+      "password": "wrong_password"
+    },
+    "emptyUsername": {
+      "username": "",
+      "password": "secret_sauce"
+    },
+    "emptyPassword": {
+      "username": "standard_user",
+      "password": ""
+    },
+    "bothEmpty": {
+      "username": "",
+      "password": ""
+    },
+    "withSpaces": {
+      "username": "  standard_user  ",
+      "password": "  secret_sauce  "
+    }
+  },
+  "edgeCases": {
+    "specialCharsUsername": {
+      "username": "user@#$%^&*()",
+      "password": "secret_sauce"
+    },
+    "specialCharsPassword": {
+      "username": "standard_user",
+      "password": "pass@#$%"
+    },
+    "sqlInjectionUsername": {
+      "username": "admin' OR '1'='1",
+      "password": "secret_sauce"
+    },
+    "sqlInjectionPassword": {
+      "username": "standard_user",
+      "password": "' OR '1'='1"
+    },
+    "whitespaceOnlyUsername": {
+      "username": "   ",
+      "password": "secret_sauce"
+    },
+    "whitespaceOnlyPassword": {
+      "username": "standard_user",
+      "password": "   "
+    },
+    "uppercaseUsername": {
+      "username": "STANDARD_USER",
+      "password": "secret_sauce"
+    },
+    "unicodeChars": {
+      "username": "用户名",
+      "password": "パスワード"
+    }
+  },
+  "products": [
+    "Sauce Labs Backpack",
+    "Sauce Labs Bike Light",
+    "Sauce Labs Bolt T-Shirt",
+    "Sauce Labs Fleece Jacket",
+    "Sauce Labs Onesie",
+    "Test.allTheThings() T-Shirt (Red)"
+  ],
+  "errorMessages": {
+    "invalidCredentials": "Epic sadface: Username and password do not match any user in this service",
+    "lockedOut": "Epic sadface: Sorry, this user has been locked out.",
+    "usernameRequired": "Epic sadface: Username is required",
+    "passwordRequired": "Epic sadface: Password is required"
+  }
+}
